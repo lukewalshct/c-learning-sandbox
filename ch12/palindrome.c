@@ -33,26 +33,32 @@ int main(void)
             addLetter(c, chars, &i);
     }
 
-    printIsPalindrome(chars, &i);
+    i--;
+    printIsPalindrome(chars, &(i));
 
     return 0;
 }
 
 void addLetter(char c, char *arr, int *i)
 {
-    printf("%d", *i);
-
     if(*i >= MAX_MESSAGE)
         printf("Message too long. Program exiting...\n");
-    else
-        arr[*i++] = c;
-
-    printf("%d", *i);
+    else {}
+        arr[(*i)++] = c;
 }
 
-void printIsPalindrome(char *chars, int *i)
+void printIsPalindrome(char *chars, int *right)
 {
-    printf("%c", chars[0]);
+    int left = 0;
 
-    printf("%c", chars[*i]);
+    while(left <= *right)
+    {
+        if(chars[left++] != chars[(*right)--])
+        {
+            printf("NOT a palindrome\n");
+            return;
+        }
+    }
+
+    printf("IS a palindrome\n");
 }
