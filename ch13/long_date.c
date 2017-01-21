@@ -11,7 +11,8 @@
 #define DATE_SEG_MAX 4
 
 void bad_input(void);
-void print_longdate(char *input);
+void print_longdate(const char *input);
+void get_date_segs(const char *input, char date_segs[3][DATE_SEG_MAX]);
 
 int main(int argc, char *argv[])
 {
@@ -29,13 +30,18 @@ void bad_input(void)
     exit(0);
 }
 
-void print_longdate(char *input)
+void print_longdate(const char *input)
 {
     if(strlen(input) != 10 && strlen(input) != 9)
         bad_input();
 
     char date_segs[3][DATE_SEG_MAX];
 
+    get_date_segs(input, date_segs);
+}
+
+void get_date_segs(const char *input, char date_segs[3][DATE_SEG_MAX])
+{
     int i, j, num_slashes;
     i = j = num_slashes = 0;
 
@@ -67,5 +73,4 @@ void print_longdate(char *input)
     
     if(num_slashes != 2)
         bad_input();
-
-} 
+}
