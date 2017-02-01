@@ -7,9 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define NUM_SEGS 3
-#define DATE_SEG_MAX 4
+#include "common_macros.h"
 
 void bad_input(void);
 void print_longdate(const char *input);
