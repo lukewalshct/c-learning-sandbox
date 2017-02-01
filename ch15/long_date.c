@@ -8,12 +8,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "common_macros.h"
+#include "date_parser.h"
 
 void bad_input(void);
 void print_longdate(const char *input);
 void get_date_segs(const char *input, char date_segs[NUM_SEGS][DATE_SEG_MAX+1]);
-int * parse_dates(char date_segs[NUM_SEGS][DATE_SEG_MAX+1]);
-void validate_dates(int dates[NUM_SEGS]);
 
 int main(int argc, char *argv[])
 {
