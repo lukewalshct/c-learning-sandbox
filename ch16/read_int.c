@@ -7,5 +7,9 @@
 
 int read_int(void)
 {
-    return 5;
+    int i;
+  
+    scanf(" %d",&i);
+
+    return i;
 }
