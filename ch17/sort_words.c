@@ -18,6 +18,7 @@
 
 int add_word(char *words[], char str[], int *words_stored);
 void print_words(char *words[], int len);
+int str_compare(const void *a, const void *b);
 
 int main(void)
 {
@@ -36,6 +37,8 @@ int main(void)
 
     } while(str[0] != '\0');
 
+    qsort(words, words_stored, sizeof(char *), str_compare);
+    
     print_words(words, words_stored);
 
     return 0;
@@ -50,6 +53,12 @@ int add_word(char *words[], char str[], int *words_stored)
     {
         printf("-- Word limit reached --\n");
         return 0;
+    }
+
+    if(strlen(str) > MAX_STR_LEN)
+    {
+        printf("-- Word exceeds char limit (20) please try again... --");
+        return 1;
     }
 
     words[*words_stored] = malloc(strlen(str) + 1);
@@ -77,4 +86,12 @@ void print_words(char *words[], int len)
     }
 
     printf("\n");
+}
+
+int str_compare(const void* a, const void* b)
+{
+    const char *ia = *(const char **)a;
+    const char *ib = *(const char **)b;
+
+    return strcmp(ia, ib);
 }
