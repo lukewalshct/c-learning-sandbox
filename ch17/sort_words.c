@@ -17,6 +17,7 @@
 #define MAX_NUM_WORDS 1000
 
 int add_word(char *words[], char str[], int *words_stored);
+void print_words(char *words[], int len);
 
 int main(void)
 {
@@ -33,16 +34,19 @@ int main(void)
         if(!add_word(words, str, &words_stored))
             break;
 
-        printf("%s\n", str);
-
     } while(str[0] != '\0');
+
+    print_words(words, words_stored);
 
     return 0;
 }
 
 int add_word(char *words[], char str[], int *words_stored)
 {
-    if(str[0] == '\0' || *words_stored == MAX_NUM_WORDS)
+    if(str[0] == '\0')
+        return 0;
+
+    if(*words_stored == MAX_NUM_WORDS)
     {
         printf("-- Word limit reached --\n");
         return 0;
@@ -56,7 +60,21 @@ int add_word(char *words[], char str[], int *words_stored)
         return 0;
     }
 
-    *words_stored++;
+    strcpy(words[*words_stored], str);
+
+    (*words_stored)++;
 
     return 1;
+}
+
+void print_words(char *words[], int len)
+{
+    int i;
+
+    for(i = 0; i < len; i++)
+    {
+        printf("%s ", words[i]);
+    }
+
+    printf("\n");
 }
