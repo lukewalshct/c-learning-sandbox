@@ -8,8 +8,24 @@
  *-Sort the array and print sorted array
  */
 
+#include <stdio.h>
+#include "read_line.h"
+
+#define MAX_LEN 20
+
 int main(void)
 {
+    char str[MAX_LEN];
+
+    do
+    {
+        printf("Enter word: ");
+
+        read_line(str, MAX_LEN);
+
+        printf("%s\n", str);
+
+    } while(str[0] != '\0');
 
     return 0;
 }
